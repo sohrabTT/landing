@@ -19,13 +19,12 @@
     :root {
       --bg: #F2F2F7;
       --card: rgba(255,255,255,0.7);
-      --card-solid: #FFFFFF;
       --separator: rgba(60,60,67,0.08);
       --label: #1C1C1E;
       --secondary: #8E8E93;
       --accent: #000000;
-      --accent-hover: #333333;
       --radius: 16px;
+      --radius-round: 9999px;
       --radius-xl: 24px;
       --font: 'Vazirmatn', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
     }
@@ -63,7 +62,6 @@
       padding: 24px 16px 40px;
     }
 
-    /* ─── HEADER ─── */
     .app-header {
       display: flex;
       align-items: center;
@@ -113,7 +111,6 @@
       border-radius: 20px;
     }
 
-    /* ─── WIDGET ─── */
     .widget {
       background: var(--card);
       -webkit-backdrop-filter: blur(40px) saturate(180%);
@@ -153,12 +150,6 @@
       letter-spacing: 0.2px;
     }
 
-    .widget-content {
-      font-size: 15px;
-      line-height: 1.6;
-    }
-
-    /* ─── HERO ─── */
     .hero-widget {
       background: var(--label);
       border: none;
@@ -231,7 +222,18 @@
       color: white;
     }
 
-    /* ─── ACTION BUTTONS ─── */
+    .app-preview {
+      margin-bottom: 16px;
+    }
+
+    .app-preview img {
+      width: 100%;
+      border-radius: var(--radius-round);
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    }
+
     .actions {
       display: flex;
       flex-direction: column;
@@ -245,7 +247,7 @@
       justify-content: center;
       gap: 12px;
       padding: 18px 24px;
-      border-radius: var(--radius);
+      border-radius: var(--radius-round);
       font-size: 17px;
       font-weight: 700;
       transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
@@ -268,19 +270,16 @@
     }
 
     .btn-download:active {
-      background: var(--accent-hover);
+      background: #333;
     }
 
     .btn-pwa {
-      background: var(--card);
-      -webkit-backdrop-filter: blur(40px) saturate(180%);
-      backdrop-filter: blur(40px) saturate(180%);
-      border: 0.5px solid rgba(255,255,255,0.6);
-      color: var(--label);
+      background: var(--accent);
+      color: white;
     }
 
     .btn-pwa:active {
-      background: rgba(255,255,255,0.5);
+      background: #333;
     }
 
     .btn-sub {
@@ -291,7 +290,6 @@
       padding: 8px 0 0;
     }
 
-    /* ─── MINI GRID ─── */
     .mini-grid {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
@@ -323,7 +321,6 @@
       flex-shrink: 0;
     }
 
-    /* ─── QUOTE ─── */
     .quote-text {
       font-size: 16px;
       line-height: 1.7;
@@ -338,7 +335,6 @@
       margin-top: 8px;
     }
 
-    /* ─── STATS ─── */
     .stats-row {
       display: flex;
       gap: 0;
@@ -376,7 +372,6 @@
       margin-top: 1px;
     }
 
-    /* ─── FOOTER ─── */
     .app-footer {
       text-align: center;
       padding: 24px 0 8px;
@@ -415,23 +410,111 @@
       color: white;
     }
 
+    /* ─── OVERLAY / POPUP ─── */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(0,0,0,0.6);
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      animation: fadeIn 0.25s ease;
+    }
+
+    .overlay.open {
+      display: flex;
+    }
+
+    .popup {
+      background: white;
+      border-radius: var(--radius-xl);
+      padding: 32px 24px 24px;
+      max-width: 360px;
+      width: 100%;
+      text-align: center;
+      animation: slideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 24px 80px rgba(0,0,0,0.2);
+    }
+
+    .popup-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--label);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+
+    .popup-icon svg {
+      width: 28px;
+      height: 28px;
+      stroke: white;
+    }
+
+    .popup-title {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .popup-desc {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--secondary);
+      margin-bottom: 20px;
+    }
+
+    .popup-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 14px 32px;
+      background: var(--accent);
+      color: white;
+      font-size: 15px;
+      font-weight: 700;
+      border-radius: var(--radius-round);
+      width: 100%;
+      transition: background 0.2s;
+    }
+
+    .popup-btn:active {
+      background: #333;
+    }
+
+    .popup-close {
+      display: block;
+      margin-top: 12px;
+      font-size: 14px;
+      color: var(--secondary);
+      font-weight: 500;
+      padding: 8px;
+      width: 100%;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(24px) scale(0.95); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
     @media (max-width: 480px) {
-      .container {
-        padding: 16px 12px 32px;
-      }
-      .hero-widget {
-        padding: 24px 20px 28px;
-      }
-      .hero-widget .hero-title {
-        font-size: 24px;
-      }
-      .mini-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-      .btn-action {
-        font-size: 15px;
-        padding: 16px 20px;
-      }
+      .container { padding: 16px 12px 32px; }
+      .hero-widget { padding: 24px 20px 28px; }
+      .hero-widget .hero-title { font-size: 24px; }
+      .mini-grid { grid-template-columns: 1fr 1fr; }
+      .btn-action { font-size: 15px; padding: 16px 20px; }
     }
   </style>
 </head>
@@ -439,7 +522,6 @@
 
   <div class="container">
 
-    <!-- ─── HEADER ─── -->
     <header class="app-header">
       <div class="app-title-area">
         <div class="app-icon">
@@ -453,7 +535,6 @@
       <span class="app-badge">۱٫۱</span>
     </header>
 
-    <!-- ─── HERO ─── -->
     <div class="hero-widget widget">
       <div class="hero-emojis">
         <img src="emoji/robot.png" alt="" class="emoji-img" />
@@ -478,9 +559,12 @@
       </div>
     </div>
 
-    <!-- ─── TWO BIG BUTTONS ─── -->
+    <div class="app-preview">
+      <img src="app-preview.png" alt="پیش‌نمایش کالریا" />
+    </div>
+
     <div class="actions">
-      <a href="https://storage.nixfile.com/user-0bf0de85-07b7-4d3a-9e0d-2b3301a42444/uploads/540503f2-675b-11f1-b218-be680724da53/Kalleria.apk?response-content-type=application%2Foctet-stream&response-content-disposition=attachment%3B%20filename%3D%22Kalleria.apk%22&response-cache-control=public%2C%20max-age%3D31536000%2C%20immutable&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=QWdT0zEw1jCQYz44jzUG%2F20260613%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260613T191415Z&X-Amz-SignedHeaders=host&X-Amz-Expires=172800&X-Amz-Signature=b423425b6b4f4b2f2e53d26a0b3c3a0ad8c3274d5e437e2c86fe9ef6af486e30" class="btn-action btn-download" download>
+      <a href="#" id="downloadAndroid" class="btn-action btn-download">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M12 12v9"/><path d="m8 17 4 4 4-4"/></svg>
         دانلود نسخه اندروید
       </a>
@@ -491,7 +575,6 @@
       <div class="btn-sub">APK مستقیم · ۵٫۹ MB · بدون نیاز به Google Play</div>
     </div>
 
-    <!-- ─── FEATURES ─── -->
     <div class="widget">
       <div class="widget-header">
         <span class="widget-icon"><img src="emoji/robot.png" alt="" class="emoji-img" /></span>
@@ -507,7 +590,6 @@
       </div>
     </div>
 
-    <!-- ─── QUOTE ─── -->
     <div class="widget">
       <div class="widget-header">
         <span class="widget-icon"><img src="emoji/fire.png" alt="" class="emoji-img" /></span>
@@ -519,7 +601,6 @@
       <div class="quote-author">— علی، ۵ ماه استفاده</div>
     </div>
 
-    <!-- ─── STATS ─── -->
     <div class="widget">
       <div class="widget-header">
         <span class="widget-icon"><img src="emoji/chart.png" alt="" class="emoji-img" /></span>
@@ -541,7 +622,6 @@
       </div>
     </div>
 
-    <!-- ─── FOOTER ─── -->
     <footer class="app-footer">
       <div class="app-footer-links">
         <a href="index.html">نسخه کامل</a>
@@ -550,6 +630,49 @@
     </footer>
 
   </div>
+
+  <!-- ═══ OVERLAY / POPUP ═══ -->
+  <div class="overlay" id="installOverlay">
+    <div class="popup">
+      <div class="popup-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+      </div>
+      <div class="popup-title">نصب انجام شد؟</div>
+      <div class="popup-desc">
+        اگه موقع نصب به مشکل خوردی، از طریق <strong>اینجا</strong> با ادمین ارتباط بگیر.
+      </div>
+      <a href="https://t.me/sohrabdev" target="_blank" class="popup-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22 11 13 2 9 22 2z"/></svg>
+        ارتباط با ادمین
+      </a>
+      <button class="popup-close" onclick="closePopup()">بستن</button>
+    </div>
+  </div>
+
+  <script>
+    const overlay = document.getElementById('installOverlay');
+    const downloadBtn = document.getElementById('downloadAndroid');
+    const apkUrl = "https://storage.nixfile.com/user-0bf0de85-07b7-4d3a-9e0d-2b3301a42444/uploads/540503f2-675b-11f1-b218-be680724da53/Kalleria.apk?response-content-type=application%2Foctet-stream&response-content-disposition=attachment%3B%20filename%3D%22Kalleria.apk%22&response-cache-control=public%2C%20max-age%3D31536000%2C%20immutable&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=QWdT0zEw1jCQYz44jzUG%2F20260613%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260613T191415Z&X-Amz-SignedHeaders=host&X-Amz-Expires=172800&X-Amz-Signature=b423425b6b4f4b2f2e53d26a0b3c3a0ad8c3274d5e437e2c86fe9ef6af486e30";
+
+    downloadBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      // Trigger download
+      const a = document.createElement('a');
+      a.href = apkUrl;
+      a.download = 'Kalleria.apk';
+      a.click();
+      // Show popup
+      overlay.classList.add('open');
+    });
+
+    function closePopup() {
+      overlay.classList.remove('open');
+    }
+
+    overlay.addEventListener('click', function(e) {
+      if (e.target === overlay) closePopup();
+    });
+  </script>
 
 </body>
 </html>
