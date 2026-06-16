@@ -468,23 +468,15 @@
       margin-bottom: 20px;
     }
 
-    .popup-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      padding: 14px 32px;
-      background: var(--accent);
-      color: white;
-      font-size: 15px;
-      font-weight: 700;
-      border-radius: var(--radius-round);
-      width: 100%;
-      transition: background 0.2s;
-    }
-
-    .popup-btn:active {
-      background: #333;
+    .popup-contact {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--label);
+      background: var(--bg);
+      padding: 12px 20px;
+      border-radius: 12px;
+      direction: ltr;
+      margin-bottom: 20px;
     }
 
     .popup-close {
@@ -599,12 +591,9 @@
       </div>
       <div class="popup-title">نصب انجام شد؟</div>
       <div class="popup-desc">
-        اگه موقع نصب به مشکل خوردی، از طریق <strong>اینجا</strong> با ادمین ارتباط بگیر.
+        اگه موقع نصب به مشکل خوردی، با ادمین ارتباط بگیر:
       </div>
-      <a href="https://t.me/sohrabdev" target="_blank" class="popup-btn">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22 11 13 2 9 22 2z"/></svg>
-        ارتباط با ادمین
-      </a>
+      <div class="popup-contact">sohrabdev@</div>
       <button class="popup-close" onclick="closePopup()">بستن</button>
     </div>
   </div>
