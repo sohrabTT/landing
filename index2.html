@@ -2,10 +2,7 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="theme-color" content="#000000" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>کالریا — نسخه موبایل</title>
   <meta name="description" content="کالریا، اپلیکیشن هوشمند مدیریت کالری و تغذیه" />
   <link rel="icon" href="logo.png" />
@@ -13,9 +10,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
-    /* ═══════════════════════════════════════════════
-       RESET & BASE — iOS Inspired
-       ═══════════════════════════════════════════════ */
     *, *::before, *::after {
       margin: 0;
       padding: 0;
@@ -24,31 +18,16 @@
 
     :root {
       --bg: #F2F2F7;
-      --bg-dark: #1C1C1E;
       --card: rgba(255,255,255,0.7);
-      --card-dark: rgba(44,44,46,0.8);
+      --card-solid: #FFFFFF;
       --separator: rgba(60,60,67,0.08);
-      --separator-dark: rgba(255,255,255,0.08);
       --label: #1C1C1E;
-      --label-dark: #FFFFFF;
       --secondary: #8E8E93;
-      --secondary-dark: #98989D;
-      --accent: #EA3976;
-      --accent-dark: #FF6B9D;
-      --blue: #007AFF;
-      --blue-dark: #0A84FF;
-      --green: #34C759;
-      --green-dark: #30D158;
+      --accent: #000000;
+      --accent-hover: #333333;
       --radius: 16px;
       --radius-xl: 24px;
-      --radius-xxl: 32px;
-      --safe-bottom: env(safe-area-inset-bottom, 20px);
       --font: 'Vazirmatn', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-    }
-
-    html, body {
-      height: 100%;
-      width: 100%;
     }
 
     body {
@@ -58,9 +37,6 @@
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      padding: 0;
-      min-height: 100vh;
-      min-height: -webkit-fill-available;
     }
 
     img {
@@ -81,91 +57,18 @@
       background: none;
     }
 
-    /* ═══════════════════════════════════════════════
-       APP SHELL — iOS feel
-       ═══════════════════════════════════════════════ */
-    .app-shell {
-      max-width: 430px;
+    .container {
+      max-width: 640px;
       margin: 0 auto;
-      padding: 60px 20px calc(var(--safe-bottom) + 20px);
-      position: relative;
-      min-height: 100vh;
-      min-height: -webkit-fill-available;
+      padding: 24px 16px 40px;
     }
 
-    /* ═══════════════════════════════════════════════
-       STATUS BAR Area (iOS simulation)
-       ═══════════════════════════════════════════════ */
-    .status-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      max-width: 430px;
-      margin: 0 auto;
-      padding: 14px 24px 8px;
-      display: flex;
-      justify-content: space-between;
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--label);
-      background: linear-gradient(180deg, var(--bg) 0%, transparent 100%);
-      pointer-events: none;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      body {
-        background: var(--bg-dark);
-        color: var(--label-dark);
-      }
-      .status-bar {
-        color: var(--label-dark);
-        background: linear-gradient(180deg, var(--bg-dark) 0%, transparent 100%);
-      }
-      .dynamic-island {
-        background: #1C1C1E;
-      }
-    }
-
-    .status-bar-right {
-      display: flex;
-      gap: 6px;
-      align-items: center;
-    }
-
-    .status-bar-right svg {
-      width: 16px;
-      height: 16px;
-    }
-
-    .dynamic-island {
-      position: fixed;
-      top: 11px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 120px;
-      height: 34px;
-      border-radius: 20px;
-      background: var(--label);
-      z-index: 101;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      .dynamic-island {
-        background: #FFFFFF;
-      }
-    }
-
-    /* ═══════════════════════════════════════════════
-       APP HEADER
-       ═══════════════════════════════════════════════ */
+    /* ─── HEADER ─── */
     .app-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 16px 0 8px;
-      margin-bottom: 8px;
+      padding: 8px 0 16px;
     }
 
     .app-title-area {
@@ -203,17 +106,14 @@
 
     .app-badge {
       padding: 4px 12px;
-      background: var(--accent);
+      background: var(--label);
       color: white;
       font-size: 10px;
       font-weight: 700;
       border-radius: 20px;
-      letter-spacing: 0.3px;
     }
 
-    /* ═══════════════════════════════════════════════
-       WIDGETS — iOS style
-       ═══════════════════════════════════════════════ */
+    /* ─── WIDGET ─── */
     .widget {
       background: var(--card);
       -webkit-backdrop-filter: blur(40px) saturate(180%);
@@ -222,19 +122,6 @@
       border-radius: var(--radius-xl);
       padding: 20px;
       margin-bottom: 12px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.02);
-      transition: transform 0.2s ease;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      .widget {
-        background: var(--card-dark);
-        border-color: rgba(255,255,255,0.06);
-      }
-    }
-
-    .widget:active {
-      transform: scale(0.98);
     }
 
     .widget-header {
@@ -251,7 +138,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 14px;
       flex-shrink: 0;
     }
 
@@ -270,54 +156,30 @@
     .widget-content {
       font-size: 15px;
       line-height: 1.6;
-      color: var(--label);
     }
 
-    .widget-content strong {
-      font-weight: 700;
-    }
-
-    .widget-row {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 8px 0;
-    }
-
-    .widget-row + .widget-row {
-      border-top: 0.5px solid var(--separator);
-    }
-
-    @media (prefers-color-scheme: dark) {
-      .widget-row + .widget-row {
-        border-top-color: var(--separator-dark);
-      }
-    }
-
-    /* ═══════════════════════════════════════════════
-       BIG APP CARD (Hero Widget)
-       ═══════════════════════════════════════════════ */
+    /* ─── HERO ─── */
     .hero-widget {
-      background: linear-gradient(135deg, #1C1C1E 0%, #2C2C2E 100%);
+      background: var(--label);
       border: none;
       padding: 28px 24px 32px;
       margin-bottom: 16px;
-      border-radius: var(--radius-xxl);
+      border-radius: var(--radius-xl);
     }
 
     .hero-widget .widget-title {
-      color: rgba(255,255,255,0.6);
-    }
-
-    .hero-widget .widget-content {
-      color: white;
+      color: rgba(255,255,255,0.5);
     }
 
     .hero-emojis {
-      font-size: 40px;
       display: flex;
       gap: 12px;
       margin-bottom: 16px;
+    }
+
+    .hero-emojis .emoji-img {
+      width: 40px;
+      height: 40px;
     }
 
     .hero-widget .hero-title {
@@ -332,9 +194,8 @@
     .hero-widget .hero-desc {
       font-size: 14px;
       line-height: 1.6;
-      color: rgba(255,255,255,0.6);
+      color: rgba(255,255,255,0.5);
       margin-bottom: 20px;
-      max-width: 280px;
     }
 
     .hero-widget .hero-desc strong {
@@ -362,7 +223,7 @@
 
     .hero-rating-text {
       font-size: 12px;
-      color: rgba(255,255,255,0.5);
+      color: rgba(255,255,255,0.4);
       font-weight: 500;
     }
 
@@ -370,49 +231,7 @@
       color: white;
     }
 
-    /* ═══════════════════════════════════════════════
-       FEATURES WIDGET (Grid)
-       ═══════════════════════════════════════════════ */
-    .mini-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      margin-top: 4px;
-    }
-
-    .mini-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 12px;
-      background: rgba(255,255,255,0.5);
-      border-radius: var(--radius);
-      font-size: 13px;
-      font-weight: 600;
-      transition: background 0.2s ease;
-    }
-
-    .mini-item:active {
-      background: rgba(255,255,255,0.8);
-    }
-
-    @media (prefers-color-scheme: dark) {
-      .mini-item {
-        background: rgba(255,255,255,0.05);
-      }
-      .mini-item:active {
-        background: rgba(255,255,255,0.1);
-      }
-    }
-
-    .mini-item .emoji-img {
-      width: 18px;
-      height: 18px;
-    }
-
-    /* ═══════════════════════════════════════════════
-       ACTION BUTTONS — iOS Style
-       ═══════════════════════════════════════════════ */
+    /* ─── ACTION BUTTONS ─── */
     .actions {
       display: flex;
       flex-direction: column;
@@ -430,13 +249,11 @@
       font-size: 17px;
       font-weight: 700;
       transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-      position: relative;
-      overflow: hidden;
       -webkit-tap-highlight-color: transparent;
     }
 
     .btn-action:active {
-      transform: scale(0.96);
+      transform: scale(0.97);
     }
 
     .btn-action svg {
@@ -445,27 +262,13 @@
       flex-shrink: 0;
     }
 
-    .btn-android {
+    .btn-download {
       background: var(--accent);
       color: white;
-      box-shadow: 0 4px 20px rgba(234,57,118,0.35);
     }
 
-    .btn-android:active {
-      box-shadow: 0 2px 8px rgba(234,57,118,0.25);
-    }
-
-    .btn-android::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
-      opacity: 0;
-      transition: opacity 0.2s ease;
-    }
-
-    .btn-android:active::before {
-      opacity: 1;
+    .btn-download:active {
+      background: var(--accent-hover);
     }
 
     .btn-pwa {
@@ -473,25 +276,11 @@
       -webkit-backdrop-filter: blur(40px) saturate(180%);
       backdrop-filter: blur(40px) saturate(180%);
       border: 0.5px solid rgba(255,255,255,0.6);
-      color: var(--blue);
-    }
-
-    @media (prefers-color-scheme: dark) {
-      .btn-pwa {
-        background: var(--card-dark);
-        border-color: rgba(255,255,255,0.06);
-        color: var(--blue-dark);
-      }
+      color: var(--label);
     }
 
     .btn-pwa:active {
       background: rgba(255,255,255,0.5);
-    }
-
-    @media (prefers-color-scheme: dark) {
-      .btn-pwa:active {
-        background: rgba(255,255,255,0.1);
-      }
     }
 
     .btn-sub {
@@ -499,12 +288,42 @@
       color: var(--secondary);
       font-weight: 500;
       text-align: center;
-      padding: 12px 0;
+      padding: 8px 0 0;
     }
 
-    /* ═══════════════════════════════════════════════
-       QUOTE WIDGET
-       ═══════════════════════════════════════════════ */
+    /* ─── MINI GRID ─── */
+    .mini-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .mini-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px 8px;
+      background: rgba(255,255,255,0.5);
+      border-radius: var(--radius);
+      font-size: 12px;
+      font-weight: 600;
+      transition: background 0.2s;
+      text-align: center;
+    }
+
+    .mini-item:active {
+      background: rgba(255,255,255,0.8);
+    }
+
+    .mini-item .emoji-img {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    /* ─── QUOTE ─── */
     .quote-text {
       font-size: 16px;
       line-height: 1.7;
@@ -519,9 +338,7 @@
       margin-top: 8px;
     }
 
-    /* ═══════════════════════════════════════════════
-       STATS WIDGET
-       ═══════════════════════════════════════════════ */
+    /* ─── STATS ─── */
     .stats-row {
       display: flex;
       gap: 0;
@@ -545,12 +362,6 @@
       background: var(--separator);
     }
 
-    @media (prefers-color-scheme: dark) {
-      .stats-item + .stats-item::before {
-        background: var(--separator-dark);
-      }
-    }
-
     .stats-number {
       font-size: 22px;
       font-weight: 800;
@@ -565,12 +376,10 @@
       margin-top: 1px;
     }
 
-    /* ═══════════════════════════════════════════════
-       FOOTER
-       ═══════════════════════════════════════════════ */
+    /* ─── FOOTER ─── */
     .app-footer {
       text-align: center;
-      padding: 20px 0 4px;
+      padding: 24px 0 8px;
     }
 
     .app-footer-links {
@@ -581,9 +390,9 @@
     }
 
     .app-footer-links a {
-      font-size: 12px;
+      font-size: 13px;
       color: var(--secondary);
-      transition: color 0.2s ease;
+      transition: color 0.2s;
     }
 
     .app-footer-links a:active {
@@ -591,74 +400,44 @@
     }
 
     .app-footer-copy {
-      font-size: 11px;
+      font-size: 12px;
       color: var(--secondary);
-      opacity: 0.6;
     }
 
-    /* ═══════════════════════════════════════════════
-       BOTTOM SAFE AREA
-       ═══════════════════════════════════════════════ */
-    .home-indicator {
-      width: 134px;
-      height: 5px;
-      background: var(--secondary);
-      border-radius: 3px;
-      margin: 12px auto 0;
-      opacity: 0.3;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      .home-indicator {
-        background: rgba(255,255,255,0.3);
-      }
-    }
-
-    /* ═══════════════════════════════════════════════
-       UTILITIES
-       ═══════════════════════════════════════════════ */
     .emoji-img {
       width: 100%;
       height: 100%;
       object-fit: contain;
     }
 
-    .text-accent { color: var(--accent); }
-
-    .mt-1 { margin-top: 4px; }
-    .mt-2 { margin-top: 8px; }
-    .mb-1 { margin-bottom: 4px; }
-    .mb-2 { margin-bottom: 8px; }
-
     ::selection {
-      background: var(--accent);
+      background: var(--label);
       color: white;
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
+    @media (max-width: 480px) {
+      .container {
+        padding: 16px 12px 32px;
+      }
+      .hero-widget {
+        padding: 24px 20px 28px;
+      }
+      .hero-widget .hero-title {
+        font-size: 24px;
+      }
+      .mini-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .btn-action {
+        font-size: 15px;
+        padding: 16px 20px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- ═══ DYNAMIC ISLAND ═══ -->
-  <div class="dynamic-island"></div>
-
-  <!-- ═══ STATUS BAR ═══ -->
-  <div class="status-bar">
-    <span id="statusTime">۹:۴۱</span>
-    <div class="status-bar-right">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="12" rx="2" ry="2"/><line x1="10" y1="11" x2="14" y2="11"/></svg>
-    </div>
-  </div>
-
-  <!-- ═══ APP SHELL ═══ -->
-  <div class="app-shell" role="main">
+  <div class="container">
 
     <!-- ─── HEADER ─── -->
     <header class="app-header">
@@ -671,13 +450,15 @@
           <div class="app-subtitle">دستیار سلامت هوشمند</div>
         </div>
       </div>
-      <span class="app-badge">۱.۱</span>
+      <span class="app-badge">۱٫۱</span>
     </header>
 
-    <!-- ─── HERO WIDGET ─── -->
+    <!-- ─── HERO ─── -->
     <div class="hero-widget widget">
       <div class="hero-emojis">
-        🧠 🥗 🏃
+        <img src="emoji/robot.png" alt="" class="emoji-img" />
+        <img src="emoji/salad.png" alt="" class="emoji-img" />
+        <img src="emoji/fire.png" alt="" class="emoji-img" />
       </div>
       <div class="hero-title">
         سلامتی‌ات رو<br/>هوشمند مدیریت کن
@@ -697,9 +478,9 @@
       </div>
     </div>
 
-    <!-- ─── TWO BIG ACTION BUTTONS ─── -->
+    <!-- ─── TWO BIG BUTTONS ─── -->
     <div class="actions">
-      <a href="https://storage.nixfile.com/user-0bf0de85-07b7-4d3a-9e0d-2b3301a42444/uploads/540503f2-675b-11f1-b218-be680724da53/Kalleria.apk?response-content-type=application%2Foctet-stream&response-content-disposition=attachment%3B%20filename%3D%22Kalleria.apk%22&response-cache-control=public%2C%20max-age%3D31536000%2C%20immutable&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=QWdT0zEw1jCQYz44jzUG%2F20260613%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260613T191415Z&X-Amz-SignedHeaders=host&X-Amz-Expires=172800&X-Amz-Signature=b423425b6b4f4b2f2e53d26a0b3c3a0ad8c3274d5e437e2c86fe9ef6af486e30" class="btn-action btn-android" download>
+      <a href="https://storage.nixfile.com/user-0bf0de85-07b7-4d3a-9e0d-2b3301a42444/uploads/540503f2-675b-11f1-b218-be680724da53/Kalleria.apk?response-content-type=application%2Foctet-stream&response-content-disposition=attachment%3B%20filename%3D%22Kalleria.apk%22&response-cache-control=public%2C%20max-age%3D31536000%2C%20immutable&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=QWdT0zEw1jCQYz44jzUG%2F20260613%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260613T191415Z&X-Amz-SignedHeaders=host&X-Amz-Expires=172800&X-Amz-Signature=b423425b6b4f4b2f2e53d26a0b3c3a0ad8c3274d5e437e2c86fe9ef6af486e30" class="btn-action btn-download" download>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M12 12v9"/><path d="m8 17 4 4 4-4"/></svg>
         دانلود نسخه اندروید
       </a>
@@ -710,7 +491,7 @@
       <div class="btn-sub">APK مستقیم · ۵٫۹ MB · بدون نیاز به Google Play</div>
     </div>
 
-    <!-- ─── FEATURES WIDGET ─── -->
+    <!-- ─── FEATURES ─── -->
     <div class="widget">
       <div class="widget-header">
         <span class="widget-icon"><img src="emoji/robot.png" alt="" class="emoji-img" /></span>
@@ -726,7 +507,7 @@
       </div>
     </div>
 
-    <!-- ─── TESTIMONIAL WIDGET ─── -->
+    <!-- ─── QUOTE ─── -->
     <div class="widget">
       <div class="widget-header">
         <span class="widget-icon"><img src="emoji/fire.png" alt="" class="emoji-img" /></span>
@@ -738,7 +519,7 @@
       <div class="quote-author">— علی، ۵ ماه استفاده</div>
     </div>
 
-    <!-- ─── STATS WIDGET ─── -->
+    <!-- ─── STATS ─── -->
     <div class="widget">
       <div class="widget-header">
         <span class="widget-icon"><img src="emoji/chart.png" alt="" class="emoji-img" /></span>
@@ -764,43 +545,11 @@
     <footer class="app-footer">
       <div class="app-footer-links">
         <a href="index.html">نسخه کامل</a>
-        <a href="#features">امکانات</a>
-        <a href="#how">نحوه کار</a>
       </div>
       <div class="app-footer-copy">© ۱۴۰۴ کالریا</div>
-      <div class="home-indicator"></div>
     </footer>
 
   </div>
-
-  <script>
-    // ─── Live status bar time ───
-    function updateStatusTime() {
-      const now = new Date();
-      const h = now.getHours().toString().padStart(2, '0');
-      const m = now.getMinutes().toString().padStart(2, '0');
-      const persianDigits = ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
-      const persianTime = (h + ':' + m).replace(/\d/g, d => persianDigits[d]);
-      document.getElementById('statusTime').textContent = persianTime;
-    }
-    updateStatusTime();
-    setInterval(updateStatusTime, 30000);
-
-    // ─── Dynamic island effect on scroll ───
-    const island = document.querySelector('.dynamic-island');
-    let lastScroll = 0;
-    window.addEventListener('scroll', () => {
-      const currentScroll = window.pageYOffset;
-      if (currentScroll > 20) {
-        island.style.transform = 'translateX(-50%) scale(0.85)';
-        island.style.opacity = '0.5';
-      } else {
-        island.style.transform = 'translateX(-50%) scale(1)';
-        island.style.opacity = '1';
-      }
-      lastScroll = currentScroll;
-    }, { passive: true });
-  </script>
 
 </body>
 </html>
